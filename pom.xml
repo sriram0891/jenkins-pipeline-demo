@@ -11,23 +11,37 @@
 	<name>jenkins-pipeline-demo</name>
 
     <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<app.runtime>4.1.5</app.runtime>
-		<mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
-	</properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
+        <anypoint.url>https://anypoint.mulesoft.com</anypoint.url>
+        <app.runtime>4.1.5</app.runtime>                        
+        <anypoint.env>development</anypoint.env>
+        <anypoint.workerType>Small</anypoint.workerType>
+        <anypoint.businessGroup>Stella McCartney</anypoint.businessGroup>
+</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-				</configuration>
-			</plugin>
+          <groupId>org.mule.tools.maven</groupId>
+          <artifactId>mule-maven-plugin</artifactId>
+          <version>${mule.maven.plugin.version}</version>
+          <extensions>true</extensions>
+          <configuration>
+               <cloudHubDeployment>
+                              <uri>${anypoint.url}</uri>
+                                <muleVersion>${app.runtime}</muleVersion>
+                                <applicationName>${anypoint.env}-${artifactId}</applicationName>
+                                <environment>${anypoint.env}</environment>
+                                <workerType>${anypoint.workerType}</workerType>
+                                <businessGroup>${anypoint.businessGroup}</businessGroup>
+                         <properties>
+                                    <key>value</key>
+                           </properties>
+                </cloudHubDeployment>
+           </configuration>
+</plugin>
 		</plugins>
 	</build>
 
