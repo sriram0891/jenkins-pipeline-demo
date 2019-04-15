@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="jenkins-pipeline-demoFlow" doc:id="5ad33953-0f43-4966-b4d9-1d5021e36f34" >
+		<scheduler doc:name="Scheduler" doc:id="18c2171c-58ec-4932-b981-7c97ff6bf9c2" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="1" timeUnit="MINUTES"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="0c7ec94a-d819-4bf1-b721-edb8805d3c95" message="deployed and running success #[now()]"/>
+	</flow>
+</mule>
